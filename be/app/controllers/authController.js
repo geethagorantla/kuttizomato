@@ -15,7 +15,7 @@ exports.login=async(req,res)=>{
     try{
        const {username,password}=req.body
        const {user,token}=await authService.login(username,password) 
-       res.status(200).json({errcode :"-1",message:"Login Successfull",errMsg:[[{user:user}],[{token:token}]]})
+       res.status(200).json({errcode :"-1",message:"Login Successfull",errMsg:[[{user:user}],[{token:token,userType:process.env.CUSTOMER_USER_TYPE}]]})
 
     }catch(err){
         res.status(400).json({ message: err.message });
